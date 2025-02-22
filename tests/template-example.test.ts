@@ -19,10 +19,21 @@ describe("example tests", () => {
     );
     expect(receipt.result).toBeOk(Cl.bool(true));
   });
+ 
   it("fails when we call the proxy that uses a constant", () => {
     const receipt = simnet.callPublicFn(
       `template-example`,
-      "mint",
+      "mint-template-sugared",
+      [Cl.uint(100), Cl.principal(address1)],
+      address1
+    );
+    expect(receipt.result).toBeErr(Cl.uint(1));
+  });
+
+  it("fails when we call the proxy that uses a constant (2)", () => {
+    const receipt = simnet.callPublicFn(
+      `template-example`,
+      "mint-template-full",
       [Cl.uint(100), Cl.principal(address1)],
       address1
     );
