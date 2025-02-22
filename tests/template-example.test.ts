@@ -12,7 +12,7 @@ const address1 = accounts.get("wallet_1")!;
 describe("example tests", () => {
   it("works when we call the proxy directly", () => {
     const receipt = simnet.callPublicFn(
-      `${address1}.template-example`,
+      `template-example`,
       "mint",
       [Cl.uint(100), Cl.principal(address1)],
       address1
@@ -21,7 +21,7 @@ describe("example tests", () => {
   });
   it("fails when we call the proxy that uses a constant", () => {
     const receipt = simnet.callPublicFn(
-      `${address1}.template-example`,
+      `template-example`,
       "mint",
       [Cl.uint(100), Cl.principal(address1)],
       address1
